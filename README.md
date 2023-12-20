@@ -5,7 +5,9 @@ Tecnologias usadas:
 - Banco de Dados H2;
 - Liquibase;
 - Mapstruct;
-- Spring Boot 3.2.
+- Spring Boot 3.2;
+- JDBC API;
+- Lombok.
 
 O projeto deve ser importado pelo intellij, e a partir dele buscar os dados via postman.
 A aplicação tem duas rotas:
