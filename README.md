@@ -10,7 +10,7 @@ Tecnologias usadas:
 O projeto deve ser importado pelo intellij, e a partir dele buscar os dados via postman.
 A aplicação tem duas rotas:
 
-/cliente (Post): Cria clientes na base de dados;
-/cliente (Get): Busca todos os clientes da base;
+- /cliente (Post): Cria clientes na base de dados;
+- /cliente (Get): Busca todos os clientes da base;
 
 
