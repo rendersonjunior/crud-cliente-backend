@@ -1,4 +1,4 @@
-package com.crud.cliente.service.clienteService;
+package com.crud.cliente.service.cliente;
 
 import com.crud.cliente.data.cliente.Cliente;
 import com.crud.cliente.data.cliente.ClienteRepository;
@@ -20,7 +20,7 @@ public class ClienteService implements IClienteService {
     }
 
     @Transactional
-    public Cliente salvarCliente(final Cliente cliente) throws Exception {
+    public Cliente salvarCliente(final Cliente cliente) {
         this.validate(cliente);
         return clienteRepository.saveCliente(cliente, cliente.getTelefones());
     }

@@ -2,16 +2,11 @@ package com.crud.cliente.controller;
 
 import com.crud.cliente.dto.cliente.ClienteDTO;
 import com.crud.cliente.dto.cliente.ClienteMapper;
-import com.crud.cliente.service.clienteService.IClienteService;
-import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.crud.cliente.service.cliente.IClienteService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,7 +31,8 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ClienteDTO salvarCliente(@RequestBody @Valid final ClienteDTO clienteDTO) throws Exception{
+    @ResponseStatus(HttpStatus.CREATED)
+    public ClienteDTO salvarCliente(@Valid @RequestBody final ClienteDTO clienteDTO) {
         return mapper.toDTO(clienteService.salvarCliente(mapper.fromDTO(clienteDTO)));
     }
 }

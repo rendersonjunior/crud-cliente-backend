@@ -1,4 +1,4 @@
-package com.crud.cliente.service.clienteService;
+package com.crud.cliente.service.cliente;
 
 import com.crud.cliente.data.cliente.Cliente;
 
@@ -9,6 +9,6 @@ public interface IClienteService {
 
     List<Cliente> buscarTodosClientes();
 
-    Cliente salvarCliente(final Cliente cliente) throws Exception;
+    Cliente salvarCliente(final Cliente cliente);
 
 }
