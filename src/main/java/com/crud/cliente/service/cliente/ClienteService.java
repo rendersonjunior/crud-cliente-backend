@@ -2,6 +2,7 @@ package com.crud.cliente.service.cliente;
 
 import com.crud.cliente.data.cliente.Cliente;
 import com.crud.cliente.data.cliente.ClienteRepository;
+import com.crud.cliente.data.telefone.Telefone;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,8 +16,14 @@ public class ClienteService implements IClienteService {
     private final ClienteRepository clienteRepository;
 
     public void validate(Cliente cliente) {
-        // Verificar se o nome do cliente é maior que 10 caracteres
-        // Verificar se o nome já existe
+        // TODO: Não é a melhor abordagem, mas será evoluido para mandar os dados limpos (apenas numericos)
+        cliente.setCpf(cliente.getCpf().replaceAll("[^0-9]", ""));
+        for (Telefone telefone : cliente.getTelefones()) {
+            telefone.setNumero(telefone.getNumero().replaceAll("[^0-9]", ""));
+        }
+
+        // TODO: Verificar se o nome já existe
+
     }
 
     @Transactional
@@ -29,4 +36,8 @@ public class ClienteService implements IClienteService {
         return clienteRepository.findAll();
     }
 
+    @Override
+    public Cliente buscarClientePorId(Long id) {
+        return clienteRepository.findById(id);
+    }
 }

@@ -4,8 +4,8 @@ create table public.cliente(
     id int AUTO_INCREMENT primary key,
     nome varchar(100) unique,
     cpf varchar(11) unique,
-    endereco varchar(50),
-    bairro varchar(20)
+    endereco varchar(100),
+    bairro varchar(50)
 );
 
 --changeset renderson.junior:criacao-de-tabela-telefone

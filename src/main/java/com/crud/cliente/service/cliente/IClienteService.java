@@ -9,6 +9,8 @@ public interface IClienteService {
 
     List<Cliente> buscarTodosClientes();
 
+    Cliente buscarClientePorId(Long id);
+
     Cliente salvarCliente(final Cliente cliente);
 
 }

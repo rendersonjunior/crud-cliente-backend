@@ -4,8 +4,6 @@ import com.crud.cliente.data.telefone.Telefone;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementSetter;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -29,9 +27,21 @@ public class JdbcClienteRepository implements ClienteRepository {
             List<Telefone> telefones = buscarTelefonesPorClienteId(cliente.getId());
             cliente.setTelefones(telefones);
         }
-
         return listaCliente;
+    }
 
+    @Override
+    public Cliente findById(Long id) {
+        final String sql = "select * from cliente where id = ?";
+
+        Cliente cliente = jdbcTemplate.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<>(Cliente.class));
+
+        if (cliente != null) {
+            List<Telefone> telefones = buscarTelefonesPorClienteId(cliente.getId());
+            cliente.setTelefones(telefones);
+        }
+
+        return cliente;
     }
 
     private List<Telefone> buscarTelefonesPorClienteId(Long clienteId) {

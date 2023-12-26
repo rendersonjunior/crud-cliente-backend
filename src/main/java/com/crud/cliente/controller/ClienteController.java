@@ -31,6 +31,11 @@ public class ClienteController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("/{id}")
+    public ClienteDTO buscarClientePorId(@PathVariable Long id) {
+        return mapper.toDTO(clienteService.buscarClientePorId(id));
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ClienteDTO salvarCliente(@Valid @RequestBody final ClienteDTO clienteDTO) {

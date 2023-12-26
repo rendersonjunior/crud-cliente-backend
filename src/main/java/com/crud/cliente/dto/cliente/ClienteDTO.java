@@ -18,6 +18,8 @@ import java.util.List;
 @AllArgsConstructor
 public class ClienteDTO {
 
+    private Long id;
+
     @NotBlank(message = "O campo nome não pode estar em branco")
     @Size(min = 10, message = "O campo nome deve ter no minimo 10 caracteres")
     private String nome;

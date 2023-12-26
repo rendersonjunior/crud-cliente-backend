@@ -8,6 +8,8 @@ public interface ClienteRepository {
 
     List<Cliente> findAll();
 
+    Cliente findById(Long id);
+
     Cliente saveCliente(Cliente c, List<Telefone> telefones);
 
 
